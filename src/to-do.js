@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import './App.css'; // Import the CSS file
+import React, { useState, useEffect } from 'react';
+import './App.css'
 
 function TodoList() {
   const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
 
-  // Handle task input change
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
   const handleChange = (e) => {
     setTask(e.target.value);
   };
 
-  // Handle adding a task
   const handleAddTask = () => {
     if (task.trim()) {
       setTasks([...tasks, task]);
@@ -18,30 +23,34 @@ function TodoList() {
     }
   };
 
-  // Handle deleting a task
   const handleDeleteTask = (index) => {
     const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
   };
 
   return (
-    <div className="TodoList">
-      <h1>To-Do List</h1>
-      <div>
+    <div className="todo-container">
+      <h1 className="todo-title">To-Do List</h1>
+      <div className="input-container">
         <input
           type="text"
           value={task}
           onChange={handleChange}
           placeholder="Enter a task"
+          className="task-input"
         />
-        <button onClick={handleAddTask}>Add Task</button>
+        <button onClick={handleAddTask} className="add-task-button">
+          Add Task
+        </button>
       </div>
-      <ul>
+      <ul className="task-list">
         {tasks.map((task, index) => (
-          <li key={index}>
-            <span className="task-number">{index + 1}. </span>
-            {task}
-            <button className="delete-btn" onClick={() => handleDeleteTask(index)}>Delete</button>
+          <li key={index} className="task-item">
+            <span className="task-number">{index + 1}.</span> 
+            <span className="task-text">{task}</span>
+            <button onClick={() => handleDeleteTask(index)} className="delete-task-button">
+              Delete
+            </button>
           </li>
         ))}
       </ul>
@@ -50,3 +59,5 @@ function TodoList() {
 }
 
 export default TodoList;
+
+

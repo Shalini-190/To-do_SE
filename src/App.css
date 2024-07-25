@@ -1,109 +1,84 @@
-/* Existing styles */
-.App {
+.todo-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo-title {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* New styles */
-.TodoList {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-}
-
-h1 {
-  color: #333;
-}
-
-input[type="text"] {
-  width: calc(100% - 120px);
+.task-input {
   padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
+  font-size: 1em;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  width: 70%;
   margin-right: 10px;
 }
 
-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
+.add-task-button {
+  padding: 10px 20px;
+  font-size: 1em;
   background-color: #007bff;
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button:hover {
+.add-task-button:hover {
   background-color: #0056b3;
 }
 
-ul {
+.task-list {
   list-style-type: none;
   padding: 0;
 }
 
-li {
+.task-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-li:last-child {
-  border-bottom: none;
-}
-
-button.delete-btn {
-  background-color: #dc3545;
-}
-
-button.delete-btn:hover {
-  background-color: #c82333;
-}
-/* Add these styles to your existing App.css file */
-
-/* Style for the task number */
 .task-number {
   font-weight: bold;
   margin-right: 10px;
+}
+
+.task-text {
+  flex: 1;
+  text-align: left;
+}
+
+.delete-task-button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-task-button:hover {
+  background-color: #c82333;
 }
